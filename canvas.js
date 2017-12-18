@@ -15,23 +15,24 @@ $(document).ready(function() {
   var piTwo = Math.PI * 2;
   var v = 70;
 
-  function Circle(x, y, dx, dy, radius, fill) {
-    
+  function Circle(x, y, dx, dy, radius, fill, stroke) {
+
     this.x = x;
     this.y = y;
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
     this.fill = fill;
+    this.stroke = stroke;
 
     this.draw = function() {
       c.beginPath();
       c.arc(this.x, this.y, this.radius, 0, piTwo, false);
       c.fillStyle = this.fill;
+      c.strokeStyle = this.stroke;
+      c.lineWidth = 0.75;
+      c.stroke()
       c.fill();
-
-
-
     }
 
     this.update = function() {
@@ -57,13 +58,14 @@ $(document).ready(function() {
       for (var i = 0; i < json.length; i++) {
         var fill = json[i]["color"]; 
         var velocity = json[i]["velocity"];
-        var radius = json[i]["size"];  
+        var radius = json[i]["size"];
+        var stroke = json[i]["proto"]  
         var x = Math.random() * innerWidth;
         var y = Math.random() * innerHeight;
         var dx =  velocity;
         var dy = velocity;
         
-        circleArray.push(new Circle(x, y , dx, dy, radius, fill));
+        circleArray.push(new Circle(x, y , dx, dy, radius, fill, stroke));
 
       }
     });
@@ -94,9 +96,9 @@ $(document).ready(function() {
     c.fillText(" R ", (canvas.width / 2) - 29 , (canvas.height / 2));
 
     c.fillStyle = "white";
-    c.fillText("  T    ", (canvas.width / 2) - 9, (canvas.height / 2));
+    c.fillText("  T    ", (canvas.width / 2) - 8.6, (canvas.height / 2));
     c.fillText("    H  ", (canvas.width / 2) - 2, (canvas.height / 2));
-    c.fillText("       E", (canvas.width / 2), (canvas.height / 2));
+    c.fillText("        E", (canvas.width / 2) - 10, (canvas.height / 2));
     c.fillText(" I N N A N E T ", (canvas.width / 2) - 150, (canvas.height / 1.85));
 
     c.font = "bold 19.5px Arial";

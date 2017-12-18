@@ -158,6 +158,36 @@ def variancechecker():
 		else:
 			newtimes.append(str(i))
 
+def rulename(proto):
+	if proto == "ARP":
+		return "#7faf4c"
+	elif proto == "Broadcast":
+		return "#00d9ff"
+	elif proto == "UDP":
+		return "#7c4caf"
+	elif proto == "TCP":
+		return "#FFFFFF"
+	elif proto == "TCP SYN/FIN":
+		return "#808080"
+	elif proto == "TCP RST":
+		return "#a9a9a9"
+	elif proto == "Bad TCP":
+		return "#ff2626"
+	elif proto == "HTTP":
+		return "#fff8dc"
+	elif proto == "ICMP":
+		return "#f19cd2"
+	elif proto == "SMB":
+		return "#ffb79a"
+	else:
+		return "you suck, tono"
+
+def tcplen(tcpsize):
+	if bool(tcpsize) == True:
+		return int(tcpsize)
+	else:
+		return 0
+
 packetfile = "/Users/antonionogueras/Desktop/packetz.json"
 
 with open(packetfile, "r+") as file:
@@ -171,6 +201,8 @@ with open(packetfile, "r+") as file:
 			sizepoint = i["_source"]["layers"]["frame"]["frame.len"]
 			colorpoint = i["_source"]["layers"]["eth"]["eth.dst"].split(':')
 			transparencypoint = i["_source"]["layers"]["eth"]["eth.src"]
+			protocol = i["_source"]["layers"]["frame"]["frame.coloring_rule.name"]
+			tcplength = i["_source"]["layers"]["tcp"]["tcp.len"]
 				
 				# ----- colorpoint index ------ #
 			firsthexsplit = colorpoint[0] + colorpoint[1] + colorpoint[2]
@@ -185,7 +217,11 @@ with open(packetfile, "r+") as file:
 			blendcolors = hex(firsthexsplit).screen(rgb(int(split_rgb[0]), int(split_rgb[1]), int(split_rgb[2]))).hex
 			parsecolor = "#{}{}".format(blendcolors, transparencypoint[0:2])
 			timeunit = math.ceil(float(timepoint))
-			babyobject = {'color': parsecolor, 'size': math.floor(int(sizepoint)) / 50}
+			babyobject = { 
+						   'color': parsecolor, 
+						   'size': (math.floor(int(sizepoint)) + (tcplen(tcplength))) / 100, 
+						   'proto': rulename(protocol) 
+						 }
 
 			# - append to the arrays ------ #	
 			timearray.append(math.ceil(float(timepoint) * 1000000))
