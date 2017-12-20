@@ -211,7 +211,7 @@ with open(packetfile, "r+") as file:
 			string_rgb = str(torgb).replace(" ", "").split(',')
 
 				# ----- variable conversions ------ #
-			blendcolors = hex(firsthexsplit).screen(rgb(int(string_rgb[0]), int(string)_rgb[1]), int(string_rgb[2]))).hex
+			blendcolors = hex(firsthexsplit).screen(rgb(int(string_rgb[0]), int(string_rgb[1]), int(string_rgb[2]))).hex
 			parsecolor = "#{}{}".format(blendcolors, transparencypoint[0:2])
 			timeunit = math.ceil(float(timepoint))
 			babyobject = {
