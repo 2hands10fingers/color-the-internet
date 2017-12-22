@@ -104,20 +104,22 @@ def variancechecker(i):
 			return 0.50
 		elif i < 500 and i >= 450:
 			return 0.45
-		elif i < 400 and i >= 350:
+		elif i < 450 and i >= 400:
 			return 0.40
-		elif i < 350 and i >= 300:
+		elif i < 400 and i >= 350:
 			return 0.35
-		elif i < 300 and i >= 250:
+		elif i < 350 and i >= 300:
 			return 0.30
-		elif i < 250 and i >= 200:
+		elif i < 300 and i >= 250:
 			return 0.25
-		elif i < 200 and i >= 150:
+		elif i < 250 and i >= 200:
 			return 0.20
-		elif i < 150 and i >= 100:
+		elif i < 200 and i >= 150:
 			return 0.15
-		elif i < 100 and i >= 95:
+		elif i < 150 and i >= 100:
 			return 0.10
+		elif i < 100 and i >= 95:
+			return 9.5
 		elif i < 95 and i >= 90:
 			return 9.0
 		elif i < 90 and i >= 85:
@@ -150,8 +152,10 @@ def variancechecker(i):
 			return 2.0
 		elif i < 15 and i >= 10:
 			return 1.5
-		elif i < 5 and i >= 0:
+		elif i < 10 and i >= 5:
 			return 1.0
+		elif i < 5 and i >= 0:
+			return 15
 		else:
 			return i
 
@@ -178,11 +182,13 @@ def rulename(proto):
 	elif proto == "SMB":
 		return "#ffb79a"
 	else:
-		return "you suck, tono"
+		return "nothing"
 
-def tcplen(tcpsize):
-	if bool(tcpsize) == True:
-		return int(tcpsize)
+def tcplen(tcpsize, color):
+	if bool(tcpsize) == True and color == '#d7cd733c':
+		return int(tcpsize) / 10
+	elif (bool(tcpsize) == True and color == '#a3f0daac'):
+		return int(tcpsize) / 10
 	else:
 		return 0
 
@@ -211,18 +217,21 @@ with open(packetfile, "r+") as file:
 			string_rgb = str(torgb).replace(" ", "").split(',')
 
 				# ----- variable conversions ------ #
-			blendcolors = hex(firsthexsplit).screen(rgb(int(string_rgb[0]), 
-								    int(string_rgb[1]), 
-								    int(string_rgb[2]))).hex
-			
+			blendcolors = hex(firsthexsplit).screen(rgb(int(string_rgb[0]),
+														int(string_rgb[1]),
+														int(string_rgb[2]))).hex
+
 			parsecolor = "#{}{}".format(blendcolors, transparencypoint[0:2])
+			# print parsecolor
 			timeunit = math.ceil(float(timepoint))
 			babyobject = {
-					'color': parsecolor,
-					'size': (math.floor(int(sizepoint)) + (tcplen(tcplength))) / 100,
-					'proto': rulename(protocol),
-					'velocity': variancechecker(math.ceil(float(timepoint) * 1000000))
-				      }
+						   'color': parsecolor,
+						   'size': (math.floor(int(sizepoint)) + (tcplen(tcplength, parsecolor))) / 55,
+						   'proto': rulename(protocol),
+						   'velocity': variancechecker(float(timepoint) * 1000000)
+						 }
+
+
 			# - append to the arrays ------ #
 			motherobject.append(babyobject)
 
@@ -245,5 +254,5 @@ with io.open(objfile, 'w', encoding='utf8') as outfile:
 print("{} Objects printed to JSON file: '{}'".format(len(motherobject), objfile))
 
 # -------- show result #
-# print("Opening up the website")
-# webbrowser.open('http://localhost:8888')
+print("Opening up the website")
+webbrowser.open('http://localhost:8888')
