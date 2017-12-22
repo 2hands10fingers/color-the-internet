@@ -6,10 +6,14 @@ Color the internet. Combines Python and Web Code to produce a data visualization
 
 ### Package key:
 
-Size = frame length + tcp length*.
-Animation speed = velcoity at which the packet came through relative to the previous one.
+Size = frame length + tcp length*
+
+Animation speed = velcoity at which the packet came through relative to the previous one
+
 Color = A combination of ethernet distribituion data
+
 Transparency = Artbitratily picked the ethernet source
+
 Ring color = Protocol
 
 *tcp length not added for other protocols
