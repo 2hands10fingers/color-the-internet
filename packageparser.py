@@ -218,18 +218,18 @@ with open(packetfile, "r+") as file:
 
 				# ----- variable conversions ------ #
 			blendcolors = hex(firsthexsplit).screen(rgb(int(string_rgb[0]),
-														int(string_rgb[1]),
-														int(string_rgb[2]))).hex
+								    int(string_rgb[1]),
+								    int(string_rgb[2]))).hex
 
 			parsecolor = "#{}{}".format(blendcolors, transparencypoint[0:2])
 			# print parsecolor
 			timeunit = math.ceil(float(timepoint))
 			babyobject = {
-						   'color': parsecolor,
-						   'size': (math.floor(int(sizepoint)) + (tcplen(tcplength, parsecolor))) / 55,
-						   'proto': rulename(protocol),
-						   'velocity': variancechecker(float(timepoint) * 1000000)
-						 }
+					'color': parsecolor,
+					'size': (math.floor(int(sizepoint)) + (tcplen(tcplength, parsecolor))) / 55,
+					'proto': rulename(protocol),
+					'velocity': variancechecker(float(timepoint) * 1000000)
+				      }
 
 
 			# - append to the arrays ------ #
