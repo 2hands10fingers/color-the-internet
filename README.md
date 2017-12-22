@@ -1,6 +1,6 @@
 # color-the-internet
 
-<img src="https://i.imgur.com/MKbnJVH.gif">
+<img src="https://i.imgur.com/iEKLbKi.gifv">
 
 Color the internet. Combines Python and Javascript to produce a data visualization of datapoints received from incoming internet packets. This is currently a work in progress.
 
