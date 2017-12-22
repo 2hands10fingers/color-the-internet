@@ -12,6 +12,7 @@ Color = A combination of ethernet distribituion data
 Transparency = Artbitratily picked the ethernet source
 Ring color = Protocol
 
+*tcp length not added for other protocols
 #### Protocol Color Key:
 <img src="https://i.imgur.com/pBhk4ST.png">
 
@@ -21,3 +22,9 @@ Ring color = Protocol
 - Eating pasta, not sleeping enough
 
 
+Antonio M. Nogueras © 2017
+A GLOTACOSM production
+
+
+Thanks for viewing,
+2hands10fingers
