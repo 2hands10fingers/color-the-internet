@@ -10,6 +10,45 @@ motherobject = [] # behold the mother object
 # -- checking size of the time from last packet and converts it to velocity rate
 # -- yes, it looks ugly; i'm sorry...
 def variancechecker(i):
+	if i < 10 and i >= 5:
+		return 1.0
+	elif i < 5 and i >= 0:
+		return 15
+	elif i == 1000000:
+		return 0.0095
+	elif i > 1000000 and i < 0:
+		return i
+	resp = 0.5
+	min = 5
+	max = 5
+	passo = 5
+	cont = 0
+	contmax = 18
+	multiply = 1
+	counter = 0
+	while(max < 1000000):
+		if cont == contmax:
+			cont = 0
+			counter += 1
+			if counter == 3:
+				passo = 5000
+				min = 100000
+			else:
+				min = max
+			passo *= 10
+			min -= passo
+			contmax = 17
+			multiply *= 0.1
+			resp = 0.5
+		else:
+			cont += 1
+		resp += 0.5
+		min += passo
+		max = min + passo
+		if i >= min and i < max:
+			return (resp * multiply)
+
+			
 		if i <= 1000000 and i >= 950000:
 			 return 0.0095
 		elif i < 950000 and i >= 900000:
