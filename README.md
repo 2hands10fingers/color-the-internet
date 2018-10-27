@@ -4,7 +4,7 @@
 
 Color the internet. Combines Python and Web Code to produce a data visualization of datapoints received from incoming internet packets. This is currently a work in progress, but done for now. Feel free to contribute!
 
-### -------------> <a href="https://glotacosm.com/colortheinnanet">View the Result</a> <-------------
+## <a style="color: green;" href="https://glotacosm.com/colortheinnanet">View the Result</a>
 
 ### Package key:
 
