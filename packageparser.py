@@ -12,9 +12,13 @@ def calculatevariance(num, modulus, divide):
 
 # -- checking size of the time from last packet and converts it to velocity rate
 def variancechecker(i):
-    if i < 1000000 and i >= 100000:
+    if i == 1000000:
+        return 0.0095
+    elif i < 1000000 and i >= 100000:
         return calculatevariance(i, 50000.0, 100000000.0)
-    elif i < 100000 and i >= 1000:
+    elif i < 100000 and i >= 9500:
+        return 0.095
+    elif i < 9500 and i >= 1000:
         return calculatevariance(i, 500.0, 100000.0)
     elif i < 1000 and i >= 100:
         return calculatevariance(i, 50.0, 1000.0)
