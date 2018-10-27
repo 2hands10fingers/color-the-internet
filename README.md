@@ -24,8 +24,8 @@ Ring color = Protocol
 
 ## Currently
 - Looking for new ideas!
-- Hating how ugly the `variancechecker()` is.
-- Eating pasta, not sleeping enough
+- Eating pasta
+- Not sleeping enough
 
 
 Antonio M. Nogueras © 2017,
