@@ -35,10 +35,13 @@ def variancechecker(i):
 
 
 def rulename(proto):
-  protodict = {"ARP": "#7faf4c", "Broadcast": "#00d9ff", "UDP": "#7c4caf", "TCP SYN/FIN": "#808080",
-               "TCP RST": "#a9a9a9", "Bad TCP": "#ff2626", "HTTP": "#fff8dc", "ICMP": "#f19cd2",
+  protodict = {"ARP": "#7faf4c", "Broadcast": "#00d9ff",
+               "UDP": "#7c4caf", "TCP SYN/FIN": "#808080",
+               "TCP RST": "#a9a9a9", "Bad TCP": "#ff2626",
+               "HTTP": "#fff8dc", "ICMP": "#f19cd2",
                "SMB": "#ffb79a", "TCP": "#FFFFFF"}
-  return protodict.get(proto, "#000000")
+
+  return protodict.get(proto, "#0aa3a9")
 
 
 def tcplen(tcpsize, color):
